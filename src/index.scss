@@ -1,0 +1,74 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+#root {
+  height: 100%;
+}
+
+button, input, select {
+  height: 50px;
+  padding: 10px 20px;
+}
+
+ul, li, p {
+  margin: 0;
+  padding: 0;
+}
+
+.action-buttons-wrapper {
+  margin: 10px 20px 10px 0;
+}
+
+.main-container {
+  height: 100%;
+}
+
+.layout-wrapper {
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+
+  .layout-top {
+    flex: 0.5;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    box-shadow: 0 2px 5px 0px rgba(0, 0, 0, 0.1);
+
+    z-index: 2;
+  }
+
+  .layout-bottom {
+    flex: 5;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    background: #f1f1f1;
+
+    z-index: 1;
+  }
+}
+
+.color-positive {
+  color: green;
+}
+
+.color-negative {
+  color: red;
+}
