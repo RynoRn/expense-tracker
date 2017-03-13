@@ -1,42 +1,38 @@
-import React, { Component } from 'react';
+import React from 'react';
+
 import { CategoryList } from './../category-list';
 
-export class ActionButtons extends Component {
-  constructor(props) {
-    super(props);
+const categories = [
+  // Expenses
+  'Food', 'Coffee', 'Bills', 'Taxi', 'Parking', 'Clothes', 'Lover',
+  'Movies', 'Games', 'Travel', 'Sports', 'Doctor', 'Gifts', 'Family',
+  'Education', 'Investment', 'Others',
+  // Income
+  'Salary', 'Award', 'Selling', 'Salary Bonus'
+].sort();
 
-    this.state = { selectedCategory: '' };
+export const ActionButtons = ({ addExpense, addSummary, resetSummary, resetExpense }) => {
+  let inputExpense;
+  let selectedCategory = categories[0];
 
-    this.onCategoryChange = this.onCategoryChange.bind(this);
-  }
+  return (
+    <div className="action-buttons-wrapper">
+      <CategoryList categories={ categories } category={ selectedCategory } onCategoryChange={ (event) => selectedCategory = event.target.value } />
 
-  render() {
-    let inputExpense;
+      <input type="number" placeholder="Expense Amount" ref={node => { inputExpense = node; }} />
 
-    return (
-      <div className="action-buttons-wrapper">
+      <button onClick={
+        () => {
+          const value = inputExpense.value;
+          if (!value.trim()) {
+            return;
+          }
 
-        <CategoryList onCategoryChange={ this.onCategoryChange } />
-
-        <input type="number" placeholder="Expense Amount" ref={node => { inputExpense = node }} />
-
-        <button onClick={ () => this.onAddExpenseClick({ value: inputExpense.value }) }>Add Expense</button>
-      </div>
-    );
-  }
-
-  onAddExpenseClick({ value }) {
-    if (!value.trim()) {
-      return;
-    }
-
-    const { addExpense, addSummary } = this.props.actions;
-
-    addExpense({ category: this.state.selectedCategory, value });
-    addSummary(value);
-  }
-
-  onCategoryChange(value) {
-    this.setState({ selectedCategory: value });
-  }
-}
+          addExpense({ category: selectedCategory, value });
+          addSummary(value);
+        }
+      }>Add Expense</button>
+      <button onClick={ () => { resetSummary(); resetExpense(); } }>Reset Expense</button>
+    </div>
+  );
+};

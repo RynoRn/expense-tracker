@@ -13,6 +13,10 @@ export const removeExpense = (id) => ({
   id
 });
 
+export const resetExpense = (id) => ({
+  type: 'RESET_EXPENSE'
+});
+
 export const addSummary = (value) => ({
   type: 'ADD_SUMMARY',
   value
@@ -21,4 +25,8 @@ export const addSummary = (value) => ({
 export const removeSummary = (value) => ({
   type: 'REMOVE_SUMMARY',
   value
+});
+
+export const resetSummary = (value) => ({
+  type: 'RESET_SUMMARY'
 });

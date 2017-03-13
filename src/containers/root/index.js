@@ -3,12 +3,10 @@ import { Provider } from 'react-redux';
 
 import MainContainer from './../main-container';
 
-const Root = ({ store }) => {
-  return (
-    <Provider store={ store }>
-      <MainContainer />
-    </Provider>
-  );
-};
+const Root = ({ store }) => (
+  <Provider store={ store }>
+    <MainContainer />
+  </Provider>
+);
 
 export default Root;

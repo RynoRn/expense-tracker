@@ -37,7 +37,7 @@ ul, li, p {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  box-shadow: 0 2px 5px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
   z-index: 2; }
 
 .layout-wrapper .layout-bottom {

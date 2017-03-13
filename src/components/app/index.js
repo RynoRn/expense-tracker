@@ -1,23 +1,24 @@
-import React, { Component } from 'react';
+import './App.css';
+
+import React from 'react';
+
 import { List } from './../../components/list';
 import { ActionButtons } from './../../components/action-buttons';
 import { Summary } from './../../components/summary';
 
-import './App.css';
+export const App = (props) => {
+  const { summary, expenses } = props;
+  const { removeExpense, removeSummary, addExpense, addSummary, resetSummary, resetExpense } = props.actions;
 
-export class App extends Component {
-  render() {
-    return (
-      <div className="App layout-wrapper">
-        <div className="layout-top">
-          <ActionButtons { ...this.props }></ActionButtons>
-          <Summary { ...this.props }></Summary>
-        </div>
-        <div className="layout-bottom">
-          <List { ...this.props }></List>
-        </div>
+  return (
+    <div className="App layout-wrapper">
+      <div className="layout-top">
+        <ActionButtons addExpense={ addExpense } addSummary={ addSummary } resetSummary={ resetSummary } resetExpense={ resetExpense }></ActionButtons>
+        <Summary summary={ summary }></Summary>
       </div>
-    );
-  }
+      <div className="layout-bottom">
+        <List expenses={ expenses } removeExpense={ removeExpense } removeSummary={ removeSummary }></List>
+      </div>
+    </div>
+  );
 };
-

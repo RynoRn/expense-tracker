@@ -1,16 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export class Summary extends Component {
-  render() {
-    const { summary } = this.props;
-    const className = summary > 0 ? 'color-positive' : 'color-negative';
+export const Summary = ({ summary }) => (
+  <div className="summary">
+    <div className={ summary > 0 ? 'color-positive' : 'color-negative' }>
+      <h1>{ summary }</h1>
+    </div>
+  </div>
+);
 
-    return (
-      <div className="summary">
-        <div className={ className }>
-          <h1>{ summary }</h1>
-        </div>
-      </div>
-    );
-  }
-}
+Summary.propTypes = {
+  summary: React.PropTypes.number.isRequired
+};

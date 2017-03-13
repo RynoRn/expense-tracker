@@ -1,19 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux';
 
 import { App } from './../../components/app';
-import * as addExpenseAction from './../../actions';
+import * as actions from './../../actions';
 
-class MainContainer extends Component {
-  render() {
-    return (
-      <div className="main-container">
-        <App { ...this.props } />
-      </div>
-    );
-  }
-}
+const MainContainer = (props) => (
+  <div className="main-container">
+    <App { ...props } />
+  </div>
+);
 
 const mapStateToProps = state => ({
   expenses: state.expenses,
@@ -21,7 +17,21 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(addExpenseAction, dispatch)
+  actions: bindActionCreators(actions, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainContainer);
+
+//
+// Alternative solution:
+//
+// import { addExpense } from './../../actions';
+// const mapDispatchToProps = dispatch => ({
+//   onAddExpenseClick(params) {
+//     dispatch(addExpense(params))
+//   }
+// });
+//
+// EQUALS with passing the following object instead of `mapDispatchToProps`
+// { onAddExpenseClick: addExpense }
+//

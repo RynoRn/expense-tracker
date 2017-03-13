@@ -6,9 +6,7 @@
   width: 80%;
   margin: 0 auto 5px;
   table-layout: fixed; }
-
-.expense-list li button {
-  margin: 0 0 0 10px; }
-
-.expense-list li > * {
-  display: table-cell; }
+  .expense-list li button {
+    margin: 0 0 0 10px; }
+  .expense-list li > * {
+    display: table-cell; }

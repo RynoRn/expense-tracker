@@ -1,39 +1,39 @@
-import React, { Component } from 'react';
-
 import './List.css';
 
-export class List extends Component {
-  render() {
-    const expensesCopy = this.props.expenses.slice(0);
+import React from 'react';
 
-    const sortedExpenses = expensesCopy.sort((a,b) => {
-        if (a.createdAt > b.createdAt)
-          return -1;
-        if (a.createdAt < b.createdAt)
-          return 1;
-        return 0;
-      });
+const sortByCreated = (a, b) => {
+  if (a.createdAt > b.createdAt)
+    return -1;
+  if (a.createdAt < b.createdAt)
+    return 1;
+  return 0;
+};
 
-    const expenses = sortedExpenses.map(exp => (
-      <li key={ exp.id } className={ exp.value > 0 ? 'color-positive' : 'color-negative' }>
-        <span>{ (new Date(exp.createdAt)).toLocaleString() } </span>
-        <span>{ exp.category } </span>
-        <span>{ exp.value }</span>
-        <button onClick={ () => this.onRemoveButtonClick(exp.id, exp.value) }>Remove</button>
-      </li>
-    ));
+export const List = ({ expenses, removeExpense, removeSummary }) => {
 
-    return (
-      <div className="expense-list">
-        <ul>
-          {expenses.length > 0 ? expenses : <li>No expenses yet.</li>}
-        </ul>
-      </div>
-    );
-  }
+  const sortedExpenses = expenses.sort(sortByCreated);
 
-  onRemoveButtonClick(id, value) {
-    this.props.actions.removeExpense(id)
-    this.props.actions.removeSummary(value)
-  }
-}
+  const expensesResult = sortedExpenses.map(exp => (
+    <li key={ exp.id } className={ exp.value > 0 ? 'color-positive' : 'color-negative' }>
+      <span>{ (new Date(exp.createdAt)).toLocaleString() } </span>
+      <span>{ exp.category } </span>
+      <span>{ exp.value }</span>
+      <button onClick={ () => { removeExpense(exp.id); removeSummary(exp.value); } }>Remove</button>
+    </li>
+  ));
+
+  return (
+    <div className="expense-list">
+      <ul>
+        {expensesResult.length > 0 ? expensesResult : <li>No expenses yet.</li>}
+      </ul>
+    </div>
+  );
+};
+
+List.propTypes = {
+  expenses: React.PropTypes.array.isRequired,
+  removeExpense: React.PropTypes.func.isRequired,
+  removeSummary: React.PropTypes.func.isRequired,
+};

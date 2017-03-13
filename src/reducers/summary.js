@@ -4,6 +4,8 @@ export const summary = (prevState = 0, action) => {
       return prevState + parseInt(action.value, 10);
     case 'REMOVE_SUMMARY':
       return prevState - parseInt(action.value, 10);
+    case 'RESET_SUMMARY':
+      return 0;
     default:
       return prevState;
   }
