@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 
-import MainContainer from './../main-container';
+import MainContainer from './MainContainer';
 
 const Root = ({ store }) => (
   <Provider store={ store }>

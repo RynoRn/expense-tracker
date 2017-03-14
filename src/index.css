@@ -31,24 +31,44 @@ ul, li, p {
   display: flex;
   flex-direction: column;
   height: 100%; }
-
-.layout-wrapper .layout-top {
-  flex: 0.5;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
-  z-index: 2; }
-
-.layout-wrapper .layout-bottom {
-  flex: 5;
-  overflow-x: hidden;
-  overflow-y: auto;
-  background: #f1f1f1;
-  z-index: 1; }
+  .layout-wrapper .layout-top {
+    flex: 0.5;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+    z-index: 2; }
+  .layout-wrapper .layout-bottom {
+    flex: 5;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: #f1f1f1;
+    z-index: 1; }
 
 .color-positive {
   color: green; }
 
 .color-negative {
   color: red; }
+
+.App {
+  text-align: center; }
+
+.summary .positive {
+  color: green; }
+
+.summary .negative {
+  color: red; }
+
+.expense-list ul {
+  margin: 20px 0 0; }
+
+.expense-list li {
+  display: table;
+  width: 80%;
+  margin: 0 auto 5px;
+  table-layout: fixed; }
+  .expense-list li button {
+    margin: 0 0 0 10px; }
+  .expense-list li > * {
+    display: table-cell; }

@@ -1,6 +1,7 @@
 import React from 'react';
+import { FlatButton } from 'material-ui';
 
-import { CategoryList } from './../category-list';
+import { CategoryList } from './CategoryList';
 
 const categories = [
   // Expenses
@@ -21,18 +22,28 @@ export const ActionButtons = ({ addExpense, addSummary, resetSummary, resetExpen
 
       <input type="number" placeholder="Expense Amount" ref={node => { inputExpense = node; }} />
 
-      <button onClick={
-        () => {
-          const value = inputExpense.value;
-          if (!value.trim()) {
-            return;
-          }
+      <FlatButton
+        label="Add Expense"
+        primary={true}
+        onClick={
+          () => {
+            const value = inputExpense.value;
 
-          addExpense({ category: selectedCategory, value });
-          addSummary(value);
-        }
-      }>Add Expense</button>
-      <button onClick={ () => { resetSummary(); resetExpense(); } }>Reset Expense</button>
+            if (!value && !value.trim()) {
+              return;
+            }
+
+            addExpense({ category: selectedCategory, value });
+            addSummary(inputExpense.value);
+          }
+        } />
+      <FlatButton
+        label="Reset Expense"
+        secondary={true}
+        onClick={ () => { resetSummary(); resetExpense(); } } />
     </div>
   );
 };
+
+
+

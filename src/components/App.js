@@ -1,10 +1,8 @@
-import './App.css';
-
 import React from 'react';
 
-import { List } from './../../components/list';
-import { ActionButtons } from './../../components/action-buttons';
-import { Summary } from './../../components/summary';
+import { List } from './List';
+import { ActionButtons } from './ActionButtons';
+import { Summary } from './Summary';
 
 export const App = (props) => {
   const { summary, expenses } = props;

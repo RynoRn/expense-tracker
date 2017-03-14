@@ -1,5 +1,3 @@
-import './List.css';
-
 import React from 'react';
 
 const sortByCreated = (a, b) => {
