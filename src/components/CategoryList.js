@@ -1,19 +1,15 @@
 import React from 'react';
-// import { SelectField, MenuItem } from 'material-ui';
+import { DropDownMenu, MenuItem } from 'material-ui';
 
 export const CategoryList = ({ categories, category, onCategoryChange }) => (
-  <div>
-    <select name="expense-category" id="expense-category" value={ category } onChange={ onCategoryChange }>
-      { categories.map(c => <option key={ c } value={ c }>{ c }</option>) }
-    </select>
-
-    {/*<SelectField*/}
-      {/*value={ category }*/}
-      {/*onChange={ onCategoryChange }*/}
-      {/*maxHeight={ 200 } >*/}
-        {/*{ categories.map(c => <MenuItem key={ c } value={ c } primaryText={ c } />) }*/}
-    {/*</SelectField>*/}
-  </div>
+  <DropDownMenu
+    value={ category }
+    onChange={ onCategoryChange }
+    autoWidth={ false }
+    style={ { width: 200 } }
+    menuItemStyle={ { textAlign: 'center', minHeight: '40px', lineHeight: '40px' } }>
+    { categories.map(c => <MenuItem key={ c } value={ c } primaryText={ c } />) }
+  </DropDownMenu>
 );
 
 CategoryList.propTypes = {

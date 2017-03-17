@@ -1,21 +1,19 @@
 import React from 'react';
 
-import { List } from './List';
-import { ActionButtons } from './ActionButtons';
-import { Summary } from './Summary';
+import { TopToolbar } from './TopToolbar';
+import { ExpenseList } from './ExpenseList';
 
 export const App = (props) => {
-  const { summary, expenses } = props;
-  const { removeExpense, removeSummary, addExpense, addSummary, resetSummary, resetExpense } = props.actions;
+  const { expenses } = props;
+  const { removeExpense, removeSummary } = props.actions;
 
   return (
     <div className="App layout-wrapper">
       <div className="layout-top">
-        <ActionButtons addExpense={ addExpense } addSummary={ addSummary } resetSummary={ resetSummary } resetExpense={ resetExpense }></ActionButtons>
-        <Summary summary={ summary }></Summary>
+        <TopToolbar { ...props } />
       </div>
       <div className="layout-bottom">
-        <List expenses={ expenses } removeExpense={ removeExpense } removeSummary={ removeSummary }></List>
+        <ExpenseList expenses={ expenses } removeExpense={ removeExpense } removeSummary={ removeSummary }></ExpenseList>
       </div>
     </div>
   );
